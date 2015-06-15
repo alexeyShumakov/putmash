@@ -7,6 +7,9 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
+gem 'sidekiq'
+gem 'whenever', :require => false
+gem 'httparty'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
