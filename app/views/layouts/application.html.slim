@@ -10,7 +10,9 @@ html
     == csrf_meta_tags
   body
     header
-      == render 'layouts/navigation'
+      == render 'layouts/header', valutes: @valutes
     main[role="main"]
       == render 'layouts/messages'
-      == yield
+      .container
+        == yield
+    == render 'layouts/footer'

@@ -9,7 +9,80 @@
  * compiled file so the styles you add here take precedence over styles defined in any styles
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
- *
- *= require_tree .
  *= require_self
  */
+@import "framework_and_overrides";
+$primary-color: #01499A;
+$primary-color-red: #B30932;
+
+body {
+//  background-color: #eee;
+}
+.page-header {
+  margin-top: 15px;
+}
+.title{
+  margin-left: 10px;
+  margin-top: 55px;
+  color: $primary-color;
+}
+.cart {
+  margin: 5px 15px;
+}
+.valutes-info, .valutes-info:focus, .valutes-info:hover {
+  font-size: 0.85em;
+  border: none;
+  box-shadow: none;
+  color: #fff;
+  .panel {
+    border: none;
+    box-shadow: none;
+    background-color: $primary-color-red;
+    td {
+      border: none;
+    }
+  }
+
+}
+.nav-panel {
+  .btn {
+    background: $primary-color;
+    min-width: 100px;
+    margin: 2px;
+  }
+  .btn:hover {
+    background: lighten($primary-color, 5%);
+  }
+}
+.search-panel {
+
+  border: none;
+  box-shadow: none;
+  background-color: $primary-color-red;
+
+  .btn {
+    color: #fff;
+    background: $primary-color;
+    border: solid 1px darken($primary-color, 5%);
+  }
+  label {
+    color: #fff;
+    margin-right: 15px;
+  }
+}
+.footer-panel {
+  color: #ffffff;
+  border: none;
+  box-shadow: none;
+  background-color: $primary-color-red;
+  a  {
+    color: #ffffff;
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  .btn-social-icon {
+    margin: 5px 3px;
+  }
+}

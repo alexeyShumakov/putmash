@@ -16,6 +16,7 @@ group :development, :test do
   gem 'spring'
 end
 gem 'bootstrap-sass'
+gem "font-awesome-rails"
 gem 'high_voltage'
 gem 'pg'
 gem 'simple_form'

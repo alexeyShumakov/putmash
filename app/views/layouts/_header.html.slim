@@ -1,0 +1,69 @@
+.page-header
+  .container
+    .row
+      .btn.btn-default.pull-right.cart
+        ' Корзина
+        .span.glyphicon.glyphicon-shopping-cart
+        .badge 2
+
+    .row
+      .col-sm-6.col-md-6
+        = link_to root_path
+          = image_tag 'logo.png', alt: 'logo', class: 'pull-left'
+        h3.pull-left.title ПУТЬМАШ СЕВЕРО-ЗАПАД
+        .clearfix
+
+
+      .col-sm-3.col-md-3
+        form.form-horizontal
+          .form-group
+            label.col-sm-3.col-md-3.control-label for='input-email' Почта
+            .col-sm-9.col-md-9
+              input.form-control#input-email type='email'
+          .form-group
+            label.col-sm-3.col-md-3.control-label for='input-pass' Пароль
+            .col-sm-9.col-md-9
+              input.form-control#input-pass type='password'
+          .form-group
+            .col-sm-offset-3.col-sm-9
+              button.btn.btn-default type='submit' Войти
+
+      .col-sm-3.col-md-3
+        = link_to 'http://www.cbr.ru', class: 'valutes-info'
+          .panel.panel-default.pull-right
+            .panel-body
+              table.table.table-condensed
+                thead
+                  tr
+                    th #
+                    th USD
+                    th GBP
+                    th EUR
+                tbody
+                  - valutes.reverse_each do |valute|
+                    tr
+                      td = valute.created_at.strftime('%F')
+                      td = custom_currency valute.usd
+                      td = custom_currency valute.gbp
+                      td = custom_currency valute.eur
+    .row
+      .col-sm-6.col-md-6.text-center.nav-panel
+        a.btn.btn-primary
+          strong Новости
+        a.btn.btn-primary
+          strong О нас
+        a.btn.btn-primary
+          strong О продукции
+        a.btn.btn-primary
+          strong Заказы
+        a.btn.btn-primary
+          strong Обсуждения
+      .col-md-6.col-sm-6
+        .panel.panel-default.search-panel
+          .panel-body
+            form.form-inline.text-right
+              .form-group
+                label for='search-inp' Поиск по сайту
+                input.form-control#search-inp type='text' placeholder='поиск по названию/марке'
+              .button.btn.btn-default type='submit' Найти
+
