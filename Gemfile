@@ -21,6 +21,14 @@ gem 'high_voltage'
 gem 'pg'
 gem 'simple_form'
 gem 'slim-rails'
+gem "paperclip", "~> 4.2"
+
+gem 'activeadmin', github: 'activeadmin'
+gem 'devise'
+gem 'pundit'
+gem 'draper'
+gem 'kaminari'
+
 group :development do
   gem 'better_errors'
   gem 'capistrano', '~> 3.0.1'

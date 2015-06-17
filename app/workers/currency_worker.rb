@@ -1,25 +1,25 @@
-class ValutesWorker
+class CurrencyWorker
 	include Sidekiq::Worker
 
 	def perform
 
-		valute = Valute.new
+		currency = CurrencyValue.new
 
 		doc_party = HTTParty.get('http://www.cbr.ru/scripts/XML_daily.asp')
 
 		@doc = Nokogiri::HTML(doc_party.body)
 
 		# it is GBP(British pound)
-		valute.gbp = get_valute('R01035')
+		currency.gbp = get_currency('R01035')
 		# it is USD
-		valute.usd = get_valute('R01235')
+		currency.usd = get_currency('R01235')
 		# it is EUR
-		valute.eur = get_valute('R01239')
-		valute.save
+		currency.eur = get_currency('R01239')
+		currency.save
 
 	end
 
-	def get_valute(id)
+	def get_currency(id)
 		@doc.css("##{id} value").text.gsub(',', '.').to_f
 	end
 end

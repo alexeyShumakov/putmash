@@ -20,7 +20,10 @@
 set :environment, "development"
 set :output, {:standard => "log/cron_log.log"}
 
-every 1.day, at: '12:01 am' do
-	runner "ValutesWorker.perform_async"
+# every 1.day, at: '12:01 am' do
+# 	runner "CurrencyWorker.perform_async"
+# end
+every 1.minute do
+	runner "CurrencyWorker.perform_async"
 end
 

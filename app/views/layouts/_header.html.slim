@@ -40,12 +40,12 @@
                     th GBP
                     th EUR
                 tbody
-                  - valutes.reverse_each do |valute|
+                  - currency.reverse_each do |value|
                     tr
-                      td = valute.created_at.strftime('%F')
-                      td = custom_currency valute.usd
-                      td = custom_currency valute.gbp
-                      td = custom_currency valute.eur
+                      td = value.created_at.strftime('%F')
+                      td = custom_currency value.usd
+                      td = custom_currency value.gbp
+                      td = custom_currency value.eur
     .row
       .col-sm-6.col-md-6.text-center.nav-panel
         a.btn.btn-primary

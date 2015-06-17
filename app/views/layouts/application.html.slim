@@ -10,7 +10,7 @@ html
     == csrf_meta_tags
   body
     header
-      == render 'layouts/header', valutes: @valutes
+      == render 'layouts/header', currency: @currency
     main[role="main"]
       == render 'layouts/messages'
       .container
