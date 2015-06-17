@@ -1,0 +1,9 @@
+.row
+  = image_tag @news.image.url(:medium), class: 'img-rounded'
+  h2 = @news.title
+  p = @news.body
+
+  = link_to 'Назад', root_path, class: 'btn btn-primary'
+  strong.pull-right
+    = distance_of_time_in_words_to_now @news.created_at
+    '  назад

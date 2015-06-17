@@ -12,11 +12,26 @@
  *= require_self
  */
 @import "framework_and_overrides";
+@import "news_item";
+
 $primary-color: #01499A;
 $primary-color-red: #B30932;
 
 body {
 //  background-color: #eee;
+}
+
+a {
+  color: $primary-color;
+}
+.btn-primary {
+  color: #fff;
+  background: $primary-color;
+  border: solid 1px darken($primary-color, 5%);
+  &:hover {
+    background: lighten($primary-color, 5%);
+  }
+
 }
 .page-header {
   margin-top: 15px;

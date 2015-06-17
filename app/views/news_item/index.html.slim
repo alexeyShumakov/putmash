@@ -1,0 +1,21 @@
+.row
+  .col-md-offset-2.col-md-8
+    h1 Новости нашей компании
+    - @news.each do |news|
+      .panel.panel-default.news-panel
+        .panel-body
+          = link_to news
+            = image_tag(news.image.url(:thumb), {class: 'img-rounded'})
+          i.pull-right
+            = distance_of_time_in_words_to_now news.created_at
+            '  назад
+          p
+            h4 = link_to news.title, news
+          p = news.body.truncate(300)
+          = link_to 'Читать дальше', news, class: 'btn btn-primary pull-right'
+    nav
+      ul.pager
+        li.pull-left
+          = link_to_previous_page @news, 'Предыдущая'
+        li.pull-right
+          = link_to_next_page @news, 'Следующая'

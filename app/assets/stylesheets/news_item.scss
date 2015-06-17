@@ -1,0 +1,13 @@
+// Place all the styles related to the news_item controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$primary-color: #01499A;
+$primary-color-red: #B30932;
+
+.news-panel {
+  border: solid 1px darken($primary-color, 5%);
+
+  img {
+
+  }
+}
