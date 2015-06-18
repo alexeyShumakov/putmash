@@ -1,6 +1,7 @@
 #  AdminUser.create!(:email => 'admin@example.com', :password => 'password', :password_confirmation => 'password')
 include Faker
 CurrencyValue.delete_all
+AdditionalDescription.delete_all
 Product.delete_all
 Category.delete_all
 NewsItem.delete_all
@@ -11,11 +12,14 @@ end
 6.times do
 	value = Faker::Commerce.department(2, true)
 	category = Category.create!( title: value, name: value )
-	20.times do
-		category.products.create(name: Faker::Commerce.product_name,
-		                        article: Faker::Number.number(5),
-		                        price: Faker::Commerce.price,
-		                        description: Faker::Lorem.paragraphs)
+	15.times do
+		product = category.products.create( name: Faker::Commerce.product_name,
+																				article: Faker::Number.number(5),
+																				price: Faker::Commerce.price,
+																				description: Faker::Lorem.paragraph)
+		8.times do
+			product.additional_descriptions.create(name: Faker::Lorem.word, value: Faker::Lorem.sentence(3))
+		end
 	end
 end
 30.times do

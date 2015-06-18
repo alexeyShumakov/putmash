@@ -1,2 +1,34 @@
-h1 Products#show
-p Find me in app/views/products/show.html.slim
+ol.breadcrumb
+  li
+    =link_to 'Домой', root_path
+  li
+    =link_to @product.category.name, @product.category
+  li.active = @product.name
+.row
+  .col-sm-6.col-md-6
+    h2
+      = @product.name
+    p
+      strong Артикyл:
+      '
+      = @product.article
+    p
+      strong Описание:
+    p
+      = @product.description
+    .well.price-well
+      strong.price
+        = number_to_currency(@product.price)
+        a.btn.btn-primary.btn-lg.pull-right В корзину
+      .clearfix
+    -unless @product.additional_descriptions.blank?
+      h3 Дополнительное описание
+      dl.dl-horizontal
+        -@product.additional_descriptions.each do |ad|
+          dt = ad.name
+          dd = ad.value
+  .col-sm-6.col-md-6
+    -unless @product.first_image.blank?
+      = image_tag @product.first_image.url(:medium), class: 'img-rounded'
+    -unless @product.second_image.blank?
+      = image_tag @product.second_image.url(:medium), class: 'img-rounded'

@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
 	include PgSearch
+	has_many :additional_descriptions
 	paginates_per 12
 	pg_search_scope :search_by_name_or_article, against: [:name, :article]
   belongs_to :category
