@@ -101,3 +101,13 @@ a {
     margin: 5px 3px;
   }
 }
+.categories-sidebar {
+  margin-top: 70px;
+  .active {
+    background-color: $primary-color;
+    border: solid 1px darken($primary-color, 5%);
+    &:hover {
+      background: lighten($primary-color, 5%);
+    }
+  }
+}

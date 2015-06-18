@@ -1,0 +1,9 @@
+.list-group.categories-sidebar
+  - Category.all.each do |category|
+    - if defined? current_category
+      -if current_category == category
+        = link_to category.name, category_path(category), class: 'active list-group-item'
+      -else
+        = link_to category.name, category_path(category), class: 'list-group-item'
+    -else
+      = link_to category.name, category_path(category), class: 'list-group-item'

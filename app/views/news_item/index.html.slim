@@ -19,3 +19,5 @@
           = link_to_previous_page @news, 'Предыдущая'
         li.pull-right
           = link_to_next_page @news, 'Следующая'
+  .col-md-2
+    == render 'categories/sidebar_categories'
