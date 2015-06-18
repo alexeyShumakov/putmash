@@ -1,0 +1,11 @@
+= simple_form_for(@contact) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name, label: 'Ваше имя'
+    = f.input :email, label: 'Ваш email'
+    = f.input :phone, label: 'Ваш телефон'
+    = f.input :message, label: 'Сообщение'
+
+  .form-actions
+    = f.button :submit, 'Отправить', class: 'btn btn-primary btn-block btn-lg'
