@@ -19,6 +19,7 @@ gem 'bootstrap-sass'
 gem "font-awesome-rails"
 gem 'high_voltage'
 gem 'pg'
+gem 'pg_search'
 gem 'simple_form'
 gem 'slim-rails'
 gem "paperclip", "~> 4.2"

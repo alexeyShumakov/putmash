@@ -1,0 +1,16 @@
+.row
+  .col-md-offset-2
+  .col-md-10.col-md-10
+    h2
+      ' Поиск по:
+      strong = @keyword
+    -if @products.blank?
+      p Ничего не найдено
+    -else
+      == render 'products/thumb', products: @products
+    .clearfix
+    .pull-right
+      -unless @products.blank?
+        = paginate @products
+  .col-md-2.col-sm-2
+    == render 'categories/sidebar_categories'

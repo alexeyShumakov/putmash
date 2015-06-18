@@ -61,9 +61,16 @@
       .col-md-6.col-sm-6
         .panel.panel-default.search-panel
           .panel-body
-            form.form-inline.text-right
+            = form_tag products_search_path, method: :get, class: ['form-inline', 'text-right']
               .form-group
                 label for='search-inp' Поиск по сайту
-                input.form-control#search-inp type='text' placeholder='поиск по названию/марке'
-              .button.btn.btn-default type='submit' Найти
+                =search_field_tag :search, params[:search], placeholder: 'поиск по названию/марке',
+                                  class: 'form-control',
+                                  id:'search-inp'
+                = submit_tag 'Найти', class: 'btn btn-default'
+            /form.form-inline.text-right
+            /  .form-group
+            /    label for='search-inp' Поиск по сайту
+            /    input.form-control#search-inp type='text' placeholder='поиск по названию/марке'
+            /  .button.btn.btn-default type='submit' Найти
 

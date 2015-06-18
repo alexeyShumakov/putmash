@@ -111,3 +111,30 @@ a {
     }
   }
 }
+.thumbnail {
+  &:hover {
+    border: solid 1px darken($primary-color, 5%);
+  }
+  .cart-title{
+    display: block;
+    height: 40px;
+    color: $primary-color;
+  }
+  .cart-price {
+    color: $primary-color-red;
+    font-size: 1.3em;
+  }
+}
+.pagination {
+  li a {
+    color: $primary-color;
+  }
+  .active a {
+    background-color: $primary-color;
+    border: solid 1px darken($primary-color, 5%);
+    &:hover {
+      background: lighten($primary-color, 5%);
+    }
+
+  }
+}
