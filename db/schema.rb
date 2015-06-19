@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 20150618162000) do
   create_table "products", force: :cascade do |t|
     t.decimal  "price",                     precision: 9, scale: 2
     t.string   "name"
-    t.string   "description"
+    t.text     "description"
     t.string   "article"
     t.integer  "category_id"
     t.datetime "created_at",                                        null: false
@@ -125,6 +125,10 @@ ActiveRecord::Schema.define(version: 20150618162000) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
   end
