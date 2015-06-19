@@ -1,0 +1,49 @@
+= content_for 'header' do
+  =javascript_include_tag 'my_cart'
+.col-md-offset-2.col-md-8
+  h2.text-center Ваша корзина
+  .my-cart
+    -if @cart.total_quantity == 0
+      == render 'carts/empty_cart'
+    -else
+      .table-responsive
+        table.table.table-condensed
+          thead
+            tr
+              th #
+              th Название
+              th Кол-во
+              th Цена
+              th
+          tbody
+            -@cart.line_items.each do |line_item|
+              tr id=('line_item_' + line_item.id.to_s)
+                td.col-md-2.col-sm-2
+                  =image_tag(line_item.product.first_image.url(:small), class: 'thumb-image',  alt: line_item.product.name)
+                td.col-md-2.col-sm-2
+                  =link_to(line_item.product.name, line_item.product)
+                td.col-md-3.col-sm-3
+                  .line_item_quantity_block
+                    = simple_form_for(line_item, html: {remote: true, class: 'form-inline'}) do |f|
+                      = f.button :submit, style: 'display:none;'
+                      = f.button :submit, '-', class: :minus
+                      = f.input :quantity, as: :string, label: false, input_html: { class: 'qty_form quantity', maxlength: 2}
+                      = f.button :submit, '+', class: :plus
+                td.total-price.col-md-2.col-sm-2 = number_to_currency(line_item.total_price)
+                td.col-md-1.col-sm-1
+                  = link_to  line_item, 'method': 'delete', 'remote': true, 'class': 'btn btn-default'
+                    span.glyphicon.glyphicon-remove
+
+        h3.cart-total-price.pull-right
+          i.bold = number_to_currency(@cart.total_price)
+        .clearfix
+        -if user_signed_in?
+          .btn-group.pull-right
+            a.btn.btn-primary.btn-lg Оформить заказ
+        -else
+          .cart-reg.pull-right
+            =link_to 'Войти и заказать', new_user_session_path, class: 'btn btn-primary btn-lg'
+            =link_to 'Зарегистрироваться и заказать', user_registration_path, class: 'btn btn-primary btn-lg'
+
+.col-md-2
+  == render 'categories/sidebar_categories'

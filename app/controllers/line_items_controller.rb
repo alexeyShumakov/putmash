@@ -1,13 +1,18 @@
 class LineItemsController < ApplicationController
 	before_action :set_line_item, only: [:destroy, :update]
-	def index
-		respond_to :js
-	end
 	def create
 		@product = Product.find(params[:product_id])
-		@line_item = @cart.add_product(@product.id)
+		@line_item = @cart.add_product(@product)
 		@line_item.save
 		respond_to :js
+	end
+
+	def create_in_product
+		@product = Product.find(params[:product_id])
+		@line_item = @cart.add_product(@product)
+		@line_item.save
+		respond_to :js
+
 	end
 
 	def destroy

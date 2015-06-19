@@ -19,7 +19,7 @@ ol.breadcrumb
     .well.price-well
       strong.price
         = number_to_currency(@product.price)
-        = link_to 'В корзину', line_items_path(product_id: @product.id),
+        = link_to 'В корзину', create_line_items_in_product_path(product_id: @product.id),
                   'method': 'post', 'remote': true,
                   'class': 'btn btn-lg btn-primary pull-right product-to-cart'
       .clearfix
