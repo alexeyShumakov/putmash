@@ -4,7 +4,8 @@
       .btn.btn-default.pull-right.cart
         ' Корзина
         .span.glyphicon.glyphicon-shopping-cart
-        .badge 2
+        .badge#product-qty
+          = @cart.total_quantity
 
     .row
       .col-sm-6.col-md-6

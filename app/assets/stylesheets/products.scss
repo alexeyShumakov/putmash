@@ -9,4 +9,19 @@ $primary-color-red: #B30932;
     color: $primary-color-red ;
     font-size: 1.5em;
   }
+  .btn-default:active {
+    color: white;
+    border-color: darken($primary-color-red, 5%);
+    background: lighten($primary-color-red, 8%);
+  }
+  .go-to-cart-btn {
+    background-color: $primary-color-red;
+    border-color: darken($primary-color-red, 5%);
+    color: #ffffff;
+    &:hover {
+      color: white;
+      border-color: darken($primary-color-red, 5%);
+      background: lighten($primary-color-red, 5%);
+    }
+  }
 }

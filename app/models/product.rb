@@ -3,6 +3,7 @@ class Product < ActiveRecord::Base
 	paginates_per 12
 	default_scope {order('updated_at DESC')}
 	pg_search_scope :search_by_name_or_article, against: [:name, :article]
+	has_many :line_items
 	has_many :additional_descriptions, :dependent => :delete_all
 	belongs_to :category
 	accepts_nested_attributes_for :additional_descriptions, :allow_destroy => true

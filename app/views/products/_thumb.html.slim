@@ -9,5 +9,11 @@
         p
           ' артикул:
           strong = product.article
-        a.btn.btn-primary В корзину
-        strong.pull-right.cart-price = number_to_currency(product.price)
+        h4
+          ' Цена:
+          strong.cart-price = number_to_currency(product.price)
+
+        = link_to 'В корзину', line_items_path(product_id: product.id),
+                  'method': 'post', 'remote': true,
+                  'class': 'btn-block btn btn-primary to-cart-btn',
+                  'id': "#{product.id}-cart-btn"
