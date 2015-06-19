@@ -23,17 +23,21 @@
                 ' Войти в личный кабинет
                 = link_to 'Выйти', destroy_user_session_path, :method => :delete
         -else
-          = simple_form_for(resource, as: resource_name, url: session_path(resource_name),
-                            html: { class: 'form-horizontal' },
-                            wrapper: :horizontal_form,
-                            ) do |f|
-            = f.input :email, required: false, label: 'Почта'
-            = f.input :password, required: false, label: 'Пароль'
-            .col-sm-5.login-btn
-              = f.button :submit, "Войти"
-            .col-sm-7
-              = f.input :remember_me, label: 'Запомнить меня', as: :boolean if devise_mapping.rememberable?
-
+          .panel.panel-default
+            .panel-body
+              = simple_form_for(resource, as: resource_name, url: session_path(resource_name),
+                                html: { class: 'form-horizontal' },
+                                wrapper: :horizontal_form,
+                                ) do |f|
+                = f.input :email, required: false, label: 'Почта'
+                = f.input :password, required: false, label: 'Пароль'
+                .col-sm-offset-4
+                  = f.input :remember_me, label: 'Запомнить меня', as: :boolean if devise_mapping.rememberable?
+                .input-group
+                  .col-sm-3.login-btn
+                    = f.button :submit, "Войти"
+                  .col-sm-9
+                    = link_to 'Зарегистрироваться',new_user_registration_path
       .col-sm-3.col-md-3
         = link_to 'http://www.cbr.ru', class: 'valutes-info'
           .panel.panel-default.pull-right
