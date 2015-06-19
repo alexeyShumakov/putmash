@@ -15,18 +15,24 @@
 
 
       .col-sm-3.col-md-3
-        form.form-horizontal
-          .form-group
-            label.col-sm-3.col-md-3.control-label for='input-email' Почта
-            .col-sm-9.col-md-9
-              input.form-control#input-email type='email'
-          .form-group
-            label.col-sm-3.col-md-3.control-label for='input-pass' Пароль
-            .col-sm-9.col-md-9
-              input.form-control#input-pass type='password'
-          .form-group
-            .col-sm-offset-3.col-sm-9
-              button.btn.btn-default type='submit' Войти
+        -if user_signed_in?
+          .panel.panel-default
+            .panel-body
+              strong = current_user.email
+              p
+                ' Войти в личный кабинет
+                = link_to 'Выйти', destroy_user_session_path, :method => :delete
+        -else
+          = simple_form_for(resource, as: resource_name, url: session_path(resource_name),
+                            html: { class: 'form-horizontal' },
+                            wrapper: :horizontal_form,
+                            ) do |f|
+            = f.input :email, required: false, label: 'Почта'
+            = f.input :password, required: false, label: 'Пароль'
+            .col-sm-5.login-btn
+              = f.button :submit, "Войти"
+            .col-sm-7
+              = f.input :remember_me, label: 'Запомнить меня', as: :boolean if devise_mapping.rememberable?
 
       .col-sm-3.col-md-3
         = link_to 'http://www.cbr.ru', class: 'valutes-info'
@@ -48,7 +54,7 @@
                       td = custom_currency value.eur
     .row
       .col-sm-6.col-md-6.text-center.nav-panel
-        a.btn.btn-primary
+        =link_to root_path, class: 'btn btn-primary'
           strong Новости
         a.btn.btn-primary
           strong О нас
@@ -68,9 +74,3 @@
                                   class: 'form-control',
                                   id:'search-inp'
                 = submit_tag 'Найти', class: 'btn btn-default'
-            /form.form-inline.text-right
-            /  .form-group
-            /    label for='search-inp' Поиск по сайту
-            /    input.form-control#search-inp type='text' placeholder='поиск по названию/марке'
-            /  .button.btn.btn-default type='submit' Найти
-

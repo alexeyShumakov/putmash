@@ -12,7 +12,7 @@ html
     header
       == render 'layouts/header', currency: @currency
     main[role="main"]
-      == render 'layouts/messages'
       .container
+        == render 'layouts/messages'
         == yield
     == render 'layouts/footer'

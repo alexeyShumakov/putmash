@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   resources :products, only: [:show]
   root to: 'news_item#index'
   devise_for :admin_users, ActiveAdmin::Devise.config
-  devise_for :users, ActiveAdmin::Devise.config
+  devise_for :users
   ActiveAdmin.routes(self)
 end

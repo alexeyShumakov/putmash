@@ -20,7 +20,9 @@ $primary-color-red: #B30932;
 body {
 //  background-color: #eee;
 }
-
+.login-btn {
+  padding: 0;
+}
 a {
   color: $primary-color;
 }
