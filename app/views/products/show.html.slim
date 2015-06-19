@@ -4,6 +4,7 @@ ol.breadcrumb
   li
     =link_to @product.category.name, @product.category
   li.active = @product.name
+=link_to 'Вернуться', :back, class: 'btn btn-primary'
 .row
   .col-sm-6.col-md-6
     h2

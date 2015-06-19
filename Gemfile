@@ -31,6 +31,9 @@ gem 'pundit'
 gem 'draper'
 gem 'kaminari'
 gem 'russian', '~> 0.6.0'
+
+gem 'faker'
+gem 'dotenv-rails'
 group :development do
   gem 'better_errors'
   gem 'capistrano', '~> 3.0.1'
@@ -50,7 +53,6 @@ group :development do
   gem 'spring-commands-rspec'
 end
 group :development, :test do
-	gem 'dotenv-rails'
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'rspec-rails'
