@@ -40,7 +40,7 @@
         .clearfix
         -if user_signed_in?
           .btn-group.pull-right
-            a.btn.btn-primary.btn-lg Оформить заказ
+            =link_to 'Оформить заказ', new_order_path, class: 'btn btn-primary btn-lg'
         -else
           .cart-reg.pull-right
             =link_to 'Войти и заказать', new_user_session_path, class: 'btn btn-primary btn-lg'

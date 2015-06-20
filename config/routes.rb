@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :categories, only:[:show]
   resources :products, only: [:show]
   resources :line_items, only: [:create, :destroy, :update, :index]
+  resources :orders, only: [:new, :create, :show]
   post 'line_items/create_in_product', as: :create_line_items_in_product
   root to: 'news_item#index'
   devise_for :admin_users, ActiveAdmin::Devise.config

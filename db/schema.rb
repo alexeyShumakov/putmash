@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150619200146) do
+ActiveRecord::Schema.define(version: 20150620061923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,9 +95,11 @@ ActiveRecord::Schema.define(version: 20150619200146) do
     t.decimal  "price",      precision: 8, scale: 2
     t.datetime "created_at",                                     null: false
     t.datetime "updated_at",                                     null: false
+    t.integer  "order_id"
   end
 
   add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id", using: :btree
+  add_index "line_items", ["order_id"], name: "index_line_items_on_order_id", using: :btree
   add_index "line_items", ["product_id"], name: "index_line_items_on_product_id", using: :btree
 
   create_table "news_items", force: :cascade do |t|
@@ -110,6 +112,25 @@ ActiveRecord::Schema.define(version: 20150619200146) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
   end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "status",        default: 0, null: false
+    t.integer  "user_id"
+    t.integer  "delivery_type"
+    t.string   "phone"
+    t.string   "address_index"
+    t.string   "address"
+    t.string   "city"
+    t.string   "county"
+    t.string   "first_name"
+    t.string   "second_name"
+    t.string   "surname"
+    t.text     "special"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.decimal  "price",                     precision: 9, scale: 2
@@ -156,6 +177,8 @@ ActiveRecord::Schema.define(version: 20150619200146) do
 
   add_foreign_key "additional_descriptions", "products"
   add_foreign_key "line_items", "carts"
+  add_foreign_key "line_items", "orders"
   add_foreign_key "line_items", "products"
+  add_foreign_key "orders", "users"
   add_foreign_key "products", "categories"
 end
