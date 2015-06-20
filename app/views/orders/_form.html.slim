@@ -1,7 +1,25 @@
 = simple_form_for(@order) do |f|
   = f.error_notification
-
+  p
+    strong Личные данные
+  .panel.panel-default
+    .panel-body
+      .form-inputs
+        = f.input :name, label: 'Ф.И.О.', placeholder: 'Иванов Иван Иванович'
+        = f.input :phone, label: 'Телефон', placeholder: '8(908)123-45-67'
+  p
+    strong Адрес доставки
+  .panel.panel-default
+    .panel-body
+      .form-inputs
+        = f.input :country, label: 'Страна', placeholder: 'Россия'
+        = f.input :city, label: 'Город', placeholder: 'Москва'
+        = f.input :address, label: 'Адрес', placeholder: 'пр. Мира д.44 кв.9'
+        = f.input :delivery_type, as: :select,
+                  label: 'Способ доставки',
+                  hint: 'Почта России- груз до 10кг',
+                  collection: Order.delivery_types.keys.to_a
   .form-inputs
-
+    = f.input :special, label: 'Комментарий к заказу'
   .form-actions
-    = f.button :submit
+    = f.button :submit,'Оформить заказ', class: 'btn btn-lg btn-primary btn-block'

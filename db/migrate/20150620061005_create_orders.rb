@@ -5,13 +5,10 @@ class CreateOrders < ActiveRecord::Migration
       t.references :user, index: true, foreign_key: true
       t.integer :delivery_type
       t.string :phone
-      t.string :address_index
       t.string :address
       t.string :city
-      t.string :county
-      t.string :first_name
-      t.string :second_name
-      t.string :surname
+      t.string :country
+      t.string :name
       t.text :special
 
       t.timestamps null: false

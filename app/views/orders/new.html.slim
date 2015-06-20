@@ -1,5 +1,30 @@
-h1 New order
+.row
+  .col-md-6
+    = link_to 'Изменить заказ', my_cart_path, class: 'btn btn-default pull-right change-order'
+    h2 Ваш заказ
+    .table-responsive
+      table.table.table-condensed
+        thead
+          tr
+            th #
+            th Название
+            th Кол-во
+            th Цена
+        tbody
+          -@cart.line_items.each do |line_item|
+            tr id=('line_item_' + line_item.id.to_s)
+              td.col-md-3.col-sm-3
+                =image_tag(line_item.product.first_image.url(:small), class: 'thumb-image',  alt: line_item.product.name)
+              td.col-md-4.col-sm-4
+                =link_to(line_item.product.name, line_item.product)
+              td.col-md-2.col-sm-2
+                =line_item.quantity
+              td.total-price.col-md-3.col-sm-3 = number_to_currency(line_item.total_price)
+    h3.cart-total-price.pull-right
+      i.bold = number_to_currency(@cart.total_price)
+    .clearfix
+  .col-md-6
+    h1.text-center Оформление заказа
 
-== render 'form'
+    == render 'form'
 
-= link_to 'Back', orders_path
