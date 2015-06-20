@@ -1,3 +1,4 @@
+=content_for :title, "Новости. #{@news.title} "
 .row
   = image_tag @news.image.url(:medium), class: 'img-rounded'
   h2 = @news.title
