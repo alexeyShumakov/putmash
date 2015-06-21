@@ -19,9 +19,11 @@
         -if user_signed_in?
           .panel.panel-default
             .panel-body
+              p
+                i  #{current_user.name.capitalize } #{current_user.surname.capitalize}
               strong = current_user.email
               p
-                ' Войти в личный кабинет
+                = link_to 'Личный кабинет ', private_office_path
                 = link_to 'Выйти', destroy_user_session_path, :method => :delete
         -else
           .panel.panel-default
@@ -35,10 +37,10 @@
                 .col-sm-offset-4
                   = f.input :remember_me, label: 'Запомнить меня', as: :boolean if devise_mapping.rememberable?
                 .input-group
-                  .col-sm-3.login-btn
+                  .col-sm-4.login-btn
                     = f.button :submit, "Войти"
-                  .col-sm-9
-                    = link_to 'Зарегистрироваться',new_user_registration_path
+                  .col-sm-8
+                    = link_to 'Регистрация',new_user_registration_path
       .col-sm-3.col-md-3
         = link_to 'http://www.cbr.ru', class: 'valutes-info'
           .panel.panel-default.pull-right
