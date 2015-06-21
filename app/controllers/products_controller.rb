@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   def show
-		@product = Product.find(params[:id])
+		@product = Product.where('featured', true).find(params[:id])
   end
 	def search
 		@keyword = params[:search]

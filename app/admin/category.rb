@@ -5,15 +5,14 @@ ActiveAdmin.register Category do
   member_action :edit do
     @page_title = "Изменить категорию"
   end
-	index title: 'Категории'
 
 	filter :title, label: 'Заголовок'
 	filter :name, label: 'Название'
 
-	index do
+	index title: 'Категории' do
 		id_column
 		column 'Заголовок', :title
-		column 'Название', :value
+		column 'Название', :name
 		actions
 	end
 
@@ -27,9 +26,10 @@ ActiveAdmin.register Category do
 
 	show do
 		attributes_table do
-			row :title, label: 'Заголовок'
-			row :name, label: 'Название'
+			row('Заголовок') {|cat| cat.title}
+			row('Название') {|cat| cat.name}
 		end
+		active_admin_comments
 	end
 
 	member_action :destroy, method: :delete do

@@ -3,7 +3,9 @@
     == render 'users/user_sidebar'
     == render 'categories/sidebar_categories'
   .col-md-9
-    h2.text-center  Заказ № #{@order.id}
+    h3.text-center
+      ' Заказ № #{@order.id}
+      span.label.label-default = @order.status
     .table-responsive
       table.table.table-condensed
         thead
@@ -18,10 +20,13 @@
               td.col-md-3.col-sm-3
                 =image_tag(line_item.product.first_image.url(:small), class: 'thumb-image',  alt: line_item.product.name)
               td.col-md-4.col-sm-4
-                =link_to(line_item.product.name, line_item.product)
+                =line_item.product.name
               td.col-md-2.col-sm-2
                 =line_item.quantity
               td.total-price.col-md-3.col-sm-3 = number_to_currency(line_item.total_price)
+    h5.cart-total-price.pull-right
+      i.bold = number_to_currency(@order.total_price)
+    .clearfix
     .panel.panel-default
       .panel-heading
         strong Информация о заказе

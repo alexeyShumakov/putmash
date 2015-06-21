@@ -1,7 +1,7 @@
 ActiveAdmin.register Product do
 
 	permit_params :article, :description, :name, :price, :first_image, :second_image,
-	              :category_id,
+	              :category_id, :featured,
 								:additional_descriptions_attributes => [:id, :name, :value, :product_id, :_destroy]
 	index do
 		selectable_column
@@ -17,6 +17,7 @@ ActiveAdmin.register Product do
 		f.inputs do
 			f.input :name
 			f.input :article
+			f.input :featured, label: 'Опубилкован'
 			f.input :price
 			f.input :description
 			f.input :first_image, as: :file, label: "Первое изображение",
