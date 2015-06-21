@@ -2,6 +2,9 @@ class OrdersController < ApplicationController
 	before_action :authenticate_user!
 	before_action :check_line_items, only: [:new, :create]
   def show
+		@order = current_user.orders.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+		redirect_to private_office_path
   end
 
   def new
