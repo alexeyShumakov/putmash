@@ -1,6 +1,41 @@
-p#notice = notice
-
-
-= link_to 'Edit', edit_order_path(@order)
-'|
-= link_to 'Back', orders_path
+.row
+  .col-md-3
+    == render 'users/user_sidebar'
+    == render 'categories/sidebar_categories'
+  .col-md-9
+    h2.text-center  Заказ № #{@order.id}
+    .table-responsive
+      table.table.table-condensed
+        thead
+          tr
+            th #
+            th Название
+            th Кол-во
+            th Цена
+        tbody
+          -@order.line_items.each do |line_item|
+            tr id=('line_item_' + line_item.id.to_s)
+              td.col-md-3.col-sm-3
+                =image_tag(line_item.product.first_image.url(:small), class: 'thumb-image',  alt: line_item.product.name)
+              td.col-md-4.col-sm-4
+                =link_to(line_item.product.name, line_item.product)
+              td.col-md-2.col-sm-2
+                =line_item.quantity
+              td.total-price.col-md-3.col-sm-3 = number_to_currency(line_item.total_price)
+    .panel.panel-default
+      .panel-heading
+        strong Информация о заказе
+      .panel-body
+        dl.dl-horizontal
+          dt Ф.И.О.
+          dd = @order.name
+          dt Телефон:
+          dd = @order.phone
+          dt Страна
+          dd = @order.country
+          dt Город
+          dd = @order.city
+          dt Адрес
+          dd = @order.address
+          dt Комментарий
+          dd = @order.special

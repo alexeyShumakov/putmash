@@ -1,0 +1,21 @@
+.row
+  .col-md-3
+    == render 'users/user_sidebar'
+    == render 'categories/sidebar_categories'
+  .col-md-9
+    - if current_user.orders.any?
+      .table.table-condensed
+        table.table.table-responsive
+          thead
+            tr
+              th Номер заказа
+              th Дата и время
+              th Статус
+          tbody
+            - current_user.orders.each do |order|
+              tr
+                td = link_to order.id, order_path(order)
+                td = order.created_at.strftime("%d.%m.%Y %H:%M")
+                td = order.status
+    - else
+      p У вас пока нет заказов.

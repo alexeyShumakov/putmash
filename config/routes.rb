@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'users/private_office', as: :private_office
+  get 'users/orders', as: :user_orders
   get 'carts/my_cart', as: :my_cart
 
   get 'products/search', as: :products_search

@@ -1,2 +1,18 @@
-h1 Users#private_office
-p Find me in app/views/users/private_office.html.slim
+.row
+  .col-md-3
+    == render 'users/user_sidebar'
+    == render 'categories/sidebar_categories'
+  .col-md-6
+    dl.dl-horizontal
+      dt Имя
+      dd = current_user.name
+      dt Фамилия
+      dd = current_user.surname
+      dt Организация
+      dd = current_user.organization
+      dt Должность
+      dd = current_user.position
+      dt Почта
+      dd = current_user.email
+      dt Пол
+      dd = current_user.gender

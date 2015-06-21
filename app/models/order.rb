@@ -1,7 +1,9 @@
 class Order < ActiveRecord::Base
+	default_scope {order('created_at DESC')}
   belongs_to :user
 	has_many :line_items
 	enum delivery_type: ['Автотрейдин', 'Деловые линии', 'Почта России']
+  enum status: ['Обрабатывается', 'Доставка', 'Завершен', 'Отказ' ]
 
   validates :address,
 						presence: true,

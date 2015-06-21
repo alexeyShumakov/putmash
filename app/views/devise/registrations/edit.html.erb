@@ -1,7 +1,8 @@
 <%= content_for(:title, 'Путьмаш. Изменить данные') %>
 <div class="row">
-  <div class="col-md-4">
-    <h2>hello</h2>
+  <div class="col-md-3">
+    <%= render 'users/user_sidebar' %>
+    <%= render 'categories/sidebar_categories' %>
   </div>
   <div class="col-md-6">
     <h2>Изменить данные</h2>
@@ -11,7 +12,18 @@
 
       <div class="form-inputs">
         <%= f.input :email, label:'Почта', required: true, autofocus: true %>
-        <%= f.input :name, label: 'О себе' %>
+        <%= f.input :name, label: 'Имя'%>
+        <%= f.input :surname, label: 'Фамилия' %>
+        <%= f.input :organization, label: 'Организация' %>
+        <%= f.input :position, label: 'Должность' %>
+        <%= f.input :birth_date,label: 'Дата рождения',
+                    as: :date,
+                    start_year: Date.today.year - 90,
+                    end_year: Date.today.year - 12,
+                    discard_minute: true %>
+        <%= f.input :gender, as: :radio_buttons,
+                    collection: User.genders.keys.to_a,
+                    label: 'Пол' %>
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
