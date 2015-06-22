@@ -17,7 +17,7 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-set :environment, "development"
+set :environment, "production"
 set :output, {:standard => "log/cron_log.log"}
 
 # every 1.day, at: '12:01 am' do
