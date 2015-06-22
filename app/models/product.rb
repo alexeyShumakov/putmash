@@ -27,6 +27,7 @@ class Product < ActiveRecord::Base
 		if line_items.empty?
 			return true
 		else
+			errors.add(:base, 'nope!')
 			return false
 		end
 	end

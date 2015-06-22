@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
 	def search
 		@keyword = params[:search]
 		if @keyword.length > 3
-			@products = Product.search_by_name_or_article(@keyword).page(params[:page])
+			@products = Product.search_by_name_or_article(@keyword).where('featured', true).page(params[:page])
 		end
 	end
 end

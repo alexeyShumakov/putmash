@@ -1,20 +1,19 @@
 - products.each do |product|
-  -if product.featured?
-    .col-sm-6.col-md-4
-      .thumbnail
-        = link_to product
-          = image_tag product.first_image.url(:thumb), class: 'img-rounded'
-        .caption.cart-desc-container
-          p.cart-title
-            = link_to product.name, product
-          p
-            ' артикул:
-            strong = product.article
-          h4
-            ' Цена:
-            strong.cart-price = number_to_currency(product.price)
+  .col-sm-6.col-md-4
+    .thumbnail
+      = link_to product
+        = image_tag product.first_image.url(:thumb), class: 'img-rounded'
+      .caption.cart-desc-container
+        p.cart-title
+          = link_to product.name, product
+        p
+          ' артикул:
+          strong = product.article
+        h4
+          ' Цена:
+          strong.cart-price = number_to_currency(product.price)
 
-          = link_to 'В корзину', line_items_path(product_id: product.id),
-                    'method': 'post', 'remote': true,
-                    'class': 'btn-block btn btn-primary to-cart-btn',
-                    'id': "#{product.id}-cart-btn"
+        = link_to 'В корзину', line_items_path(product_id: product.id),
+                  'method': 'post', 'remote': true,
+                  'class': 'btn-block btn btn-primary to-cart-btn',
+                  'id': "#{product.id}-cart-btn"

@@ -1,17 +1,21 @@
 ActiveAdmin.register Contact do
+	menu label: 'Письма'
 
-# See permitted parameters documentation:
-# https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-#
-# permit_params :list, :of, :attributes, :on, :model
-#
-# or
-#
-# permit_params do
-#   permitted = [:permitted, :attributes]
-#   permitted << :other if resource.something?
-#   permitted
-# end
+	permit_params :name, :email, :phone, :message
+
+	filter :email
+	filter :name, label:'Имя'
+	index do
+		column 'Дата', :created_at
+		column :email
+		column 'Телефон', :phone
+		column 'Имя', :name
+		column 'Сообщение' do |contact|
+			contact.message.truncate(60)
+		end
+
+		actions
+	end
 
 
 end
