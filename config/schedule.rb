@@ -24,10 +24,10 @@ set :output, {:standard => "log/cron_log.log"}
 # 	runner "CurrencyWorker.perform_async"
 # end
 every :day, :at => '12:10am' do
-	runner "CurrencyWorker.perform_async"
+	runner "CurrencyWorker.perform_async", :environment => 'production'
 end
 
 every 5.minutes do
-	runner "CurrencyWorker.perform_async"
+	runner "CurrencyWorker.perform_async", :environment => 'production'
 end
 
