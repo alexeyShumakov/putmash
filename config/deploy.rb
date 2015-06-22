@@ -9,7 +9,7 @@ set :scm, :git
 set :format, :pretty
 set :log_level, :debug
 set :pty, true
-set :rvm_type, :system
+set :rvm_type, :user
 set :linked_files, %w{config/database.yml .env}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 set :default_env, { path: "/opt/ruby/bin:$PATH" }
