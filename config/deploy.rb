@@ -33,7 +33,7 @@ namespace :deploy do
 
 	task :restart do
 		on roles(:all) do
-			run "#{sudo} /etc/init.d/unicorn restart"
+			run "sudo /etc/init.d/unicorn restart"
 		end
 	end
 end
