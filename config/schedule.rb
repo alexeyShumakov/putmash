@@ -25,7 +25,7 @@ every :day, :at => '12:10am' do
 	runner "CurrencyWorker.perform_async"
 end
 
-every 5.minutes do
+every 1.minute do
 	runner "CurrencyWorker.perform_async"
 end
 
