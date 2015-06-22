@@ -10,9 +10,9 @@ set :format, :pretty
 set :log_level, :debug
 set :pty, true
 set :rvm_type, :system
-set :linked_files, %w{config/database.yml}
+set :linked_files, %w{config/database.yml .env}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
+set :default_env, { path: "/opt/ruby/bin:$PATH" }
 set :keep_releases, 5
 
 namespace :deploy do
@@ -28,6 +28,11 @@ namespace :deploy do
 					execute :rake, "db:create"
 				end
 			end
+		end
+	end
+	task :restart do
+		on roles(:all) do
+			execute "sudo /etc/init.d/unicorn restart"
 		end
 	end
 end
