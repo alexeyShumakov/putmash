@@ -26,4 +26,7 @@ set :output, {:standard => "log/cron_log.log"}
 every :day, :at => '12:10am' do
 	runner "CurrencyWorker.perform_async"
 end
+every 1.minutes do
+	puts 'tic'
+end
 
