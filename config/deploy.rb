@@ -30,18 +30,10 @@ namespace :deploy do
 			end
 		end
 	end
+
 	task :restart do
 		on roles(:all) do
-			execute "sudo /etc/init.d/unicorn restart"
+			run "#{sudo} /etc/init.d/unicorn restart"
 		end
 	end
-
-	after :restart, :clear_cache do
-		on roles(:web), in: :groups, limit: 3, wait: 10 do
-			within release_path do
-				execute :rake, 'cache:clear'
-			end
-		end
-	end
-	after :finishing, 'deploy:cleanup'
 end
