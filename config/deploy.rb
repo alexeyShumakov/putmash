@@ -34,7 +34,6 @@ namespace :deploy do
 	task :restart do
 		on roles(:all) do
 			run "#{sudo} /etc/init.d/unicorn restart"
-			run "#{sudo} /usr/bin/monit restart sidekiq"
 		end
 	end
 end
