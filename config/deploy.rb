@@ -14,7 +14,7 @@ set :linked_files, %w{config/database.yml .env}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 set :keep_releases, 5
-
+set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 namespace :deploy do
 	task :setup do
 		before "deploy:migrate", :create_db

@@ -17,17 +17,15 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-set :environment, "production"
-set :output, {:standard => "log/cron_log.log"}
 
 # every 1.day, at: '12:01 am' do
 # 	runner "CurrencyWorker.perform_async"
 # end
 every :day, :at => '12:10am' do
-	runner "CurrencyWorker.perform_async", :environment => 'production'
+	runner "CurrencyWorker.perform_async"
 end
 
 every 5.minutes do
-	runner "CurrencyWorker.perform_async", :environment => 'production'
+	runner "CurrencyWorker.perform_async"
 end
 
