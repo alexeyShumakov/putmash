@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.2.1'
+ruby '2.2.2'
 gem 'rails', '4.2.1'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -41,8 +41,7 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-rails-console'
-  gem 'capistrano-rvm', '~> 0.1.1'
-  # gem 'capistrano-sidekiq' , group: :development
+  gem 'capistrano-rbenv', '~> 2.0'
   gem 'guard-bundler'
   gem 'guard-rails'
   gem 'guard-rspec'
