@@ -15,7 +15,7 @@
 # every 4.days do
 #   runner "AnotherModel.prune_old_records"
 # end
-set :environment, "development"
+# set :environment, "development"
 # Learn more: http://github.com/javan/whenever
 
 # every 1.day, at: '12:01 am' do

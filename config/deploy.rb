@@ -34,6 +34,7 @@ namespace :deploy do
 	task :restart do
 		on roles(:all) do
 			run "#{sudo} /etc/init.d/unicorn restart"
+			execute :bundle, :exec, "whenever --update-crontab #{fetch(:application)}"
 		end
 	end
 end
