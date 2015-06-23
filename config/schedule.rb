@@ -15,17 +15,18 @@
 # every 4.days do
 #   runner "AnotherModel.prune_old_records"
 # end
+env :PATH, ENV['PATH']
 # set :environment, "development"
 # Learn more: http://github.com/javan/whenever
 
 # every 1.day, at: '12:01 am' do
 # 	runner "CurrencyWorker.perform_async"
 # end
-every :day, :at => '12:10 am' do
-	runner "CurrencyWorker.perform_async"
-end
+# every :day, :at => '12:10 am' do
+# 	runner "CurrencyWorker.perform_async"
+# end
 
-every 1.minute do
-	runner "CurrencyWorker.perform_async"
+every 1.day, at: '12:01 am' do
+	rake "currency_worker:get", :output => 'log/cron.log'
 end
 

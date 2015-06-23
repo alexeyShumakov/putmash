@@ -1,7 +1,7 @@
-class CurrencyWorker
-	include Sidekiq::Worker
+namespace :currency_worker do
 
-	def perform
+	desc 'Get currency form cbr!'
+	task :get => :environment do
 
 		currency = CurrencyValue.new
 

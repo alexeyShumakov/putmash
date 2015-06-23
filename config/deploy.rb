@@ -32,11 +32,17 @@ namespace :deploy do
 			end
 		end
 	end
-
+	task :update_crontab do
+		desc 'Update crontab'
+		run "cd #{release_path} && whenever --update-crontab #{application}"
+	end
 	task :restart do
+		desc "Restart Unicorn"
 		on roles(:all) do
 			run "#{sudo} /etc/init.d/unicorn restart"
 			# execute :bundle, "whenever --update-crontab #{fetch(:application)}"
 		end
 	end
+
+	after "deploy:restart", "deploy:update_crontab"
 end
