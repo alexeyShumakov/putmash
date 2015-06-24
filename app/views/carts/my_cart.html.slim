@@ -1,7 +1,9 @@
 = content_for 'header' do
   =javascript_include_tag 'my_cart'
 = content_for :title, 'Путьмаш. Моя корзина'
-.col-md-offset-2.col-md-8
+.col-md-2
+  == render 'categories/sidebar_categories'
+.col-md-8
   h2.text-center Ваша корзина
   .my-cart
     -if @cart.total_quantity == 0
@@ -47,5 +49,3 @@
           =link_to 'Зарегистрироваться и заказать', new_user_registration_path, class: 'btn btn-primary btn-lg'
       .clearfix
 
-.col-md-2
-  == render 'categories/sidebar_categories'
