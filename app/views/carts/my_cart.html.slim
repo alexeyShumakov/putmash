@@ -43,8 +43,9 @@
           =link_to 'Перейти к оформлению заказа', new_order_path, class: 'btn btn-primary btn-lg'
       -else
         .cart-reg.pull-right
-          =link_to 'Войти и заказать', new_user_session_path, class: 'btn btn-primary btn-lg'
+          =link_to 'Войти и заказать', new_user_session_path, class: 'btn btn-primary btn-lg '
           =link_to 'Зарегистрироваться и заказать', new_user_registration_path, class: 'btn btn-primary btn-lg'
+      .clearfix
 
 .col-md-2
   == render 'categories/sidebar_categories'

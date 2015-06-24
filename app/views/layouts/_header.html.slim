@@ -15,7 +15,7 @@
         .clearfix
 
 
-      .col-sm-3.col-md-3
+      .col-sm-6.col-md-3
         -if user_signed_in?
           .panel.panel-default
             .panel-body
@@ -34,14 +34,13 @@
                                 ) do |f|
                 = f.input :email, required: false, label: 'Почта'
                 = f.input :password, required: false, label: 'Пароль'
-                .col-sm-offset-4
+                .col-sm-offset-4.remember-me
                   = f.input :remember_me, label: 'Запомнить меня', as: :boolean if devise_mapping.rememberable?
-                .input-group
-                  .col-sm-4.login-btn
-                    = f.button :submit, "Войти"
-                  .col-sm-8
-                    = link_to 'Регистрация',new_user_registration_path
-      .col-sm-3.col-md-3
+                .btn-group.btn-group-sm
+                  = f.button :submit, "Войти"
+                  = link_to 'Регистрация',new_user_registration_path, class: 'btn btn-default pull-right'
+
+      .col-sm-3.col-md-3.hidden-xs.hidden-sm
         = link_to 'http://www.cbr.ru', class: 'valutes-info'
           .panel.panel-default.pull-right
             .panel-body

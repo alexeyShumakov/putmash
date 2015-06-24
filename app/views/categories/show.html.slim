@@ -1,11 +1,11 @@
 =content_for :title, "Путьмаш. Категория: #{@category.title}"
 .row
-  .col-md-offset-2
-  .col-md-10.col-md-10
+  .col-md-2.col-sm-2
+    == render 'categories/sidebar_categories', current_category: @category
+  .col-md-10.col-md-8
     h1 = @category.title
     == render 'products/thumb', products: @products
     .clearfix
     .pull-right
       = paginate @products
-  .col-md-2.col-sm-2
-    == render 'categories/sidebar_categories', current_category: @category
+  .col-md-2

@@ -1,6 +1,8 @@
 =content_for :title, 'Путьмаш. Новости нашей компании'
 .row
-  .col-md-offset-2.col-md-8
+  .col-md-2
+    == render 'categories/sidebar_categories'
+  .col.col-md-8
     h1 Новости нашей компании
     - @news.each do |news|
       .panel.panel-default.news-panel
@@ -20,5 +22,3 @@
           = link_to_previous_page @news, 'Предыдущая'
         li.pull-right
           = link_to_next_page @news, 'Следующая'
-  .col-md-2
-    == render 'categories/sidebar_categories'
