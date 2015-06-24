@@ -1,7 +1,8 @@
 =content_for :title, 'Путьмаш. Поиск по сайту...'
 .row
-  .col-md-offset-2
-  .col-md-10.col-md-10
+  .col-md-2.col-sm-2
+    == render 'categories/sidebar_categories'
+  .col-md-10.col-md-8
     h2
       ' Поиск по:
       strong = @keyword
@@ -13,5 +14,3 @@
     .pull-right
       -unless @products.blank?
         = paginate @products
-  .col-md-2.col-sm-2
-    == render 'categories/sidebar_categories'
