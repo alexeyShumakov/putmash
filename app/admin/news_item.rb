@@ -18,7 +18,7 @@ ActiveAdmin.register NewsItem do
 	form :html => { :enctype => "multipart/form-data" } do |f|
 		f.inputs do
 			f.input :title, label: 'Заголовок'
-			f.input :body, 'Новость'
+			f.input :body, label: 'Новость'
 			f.input :image, as: :file, label: "Изображение(используйте 1400x300px) ",
 			  hint: image_tag(f.object.image.url(:thumb))
 		end
