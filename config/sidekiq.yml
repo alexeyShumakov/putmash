@@ -1,4 +1,4 @@
-:concurrency: 2
+:concurrency: 5
 :verbose: false
 :pidfile: ./tmp/pids/sidekiq.pid
 :logfile: ./log/sidekiq.log
