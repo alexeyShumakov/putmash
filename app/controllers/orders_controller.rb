@@ -16,12 +16,7 @@ class OrdersController < ApplicationController
     if @order.save
       current_user.orders << @order
       @order.add_item_from_cart(@cart)
-
-      AdminUser.all.each do |admin|
-        PurchaseConfirmation.delay.admin_confirmation(@order, admin)
-      end
-      PurchaseConfirmation.delay.user_confirmation(@order)
-      redirect_to root_path, notice: 'Спасибо за покупку! В ближайшее время мы с вами свяжемся.'
+      PurchaseJob.new.async.perform(@order)
     else
       render :new
     end

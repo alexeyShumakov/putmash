@@ -9,7 +9,7 @@ gem 'turbolinks'
 gem 'therubyracer'
 gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 2.0'
-gem 'sidekiq'
+gem 'sucker_punch'
 gem 'whenever', :require => false
 gem 'httparty'
 group :development, :test do
@@ -42,7 +42,6 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rails-console'
   gem 'capistrano-rbenv', '~> 2.0'
-  gem 'capistrano-sidekiq', group: :development
   gem 'guard-bundler'
   gem 'guard-rails'
   gem 'guard-rspec'

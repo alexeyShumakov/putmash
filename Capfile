@@ -21,6 +21,5 @@ require 'capistrano/bundler'
 require 'capistrano/rails/assets'
 require 'capistrano/rails/migrations'
 require "whenever/capistrano"
-require 'capistrano/sidekiq'
 # require 'capistrano/sidekiq/monit'
 Dir.glob('lib/capistrano/tasks/*.cap').each { |r| import r }
