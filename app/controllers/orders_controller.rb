@@ -17,6 +17,7 @@ class OrdersController < ApplicationController
       current_user.orders << @order
       @order.add_item_from_cart(@cart)
       PurchaseJob.new.async.perform(@order)
+      redirect_to private_office_path
     else
       render :new
     end
