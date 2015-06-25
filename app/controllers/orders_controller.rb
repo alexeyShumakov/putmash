@@ -3,10 +3,6 @@ class OrdersController < ApplicationController
   before_action :check_line_items, only: [:new, :create]
   def show
     @order = current_user.orders.find(params[:id])
-    AdminUser.all.each do |admin|
-      PurchaseConfirmation.admin_confirmation(@order, admin).deliver_later
-    end
-    PurchaseConfirmation.user_confirmation(@order).deliver_later
   rescue ActiveRecord::RecordNotFound
     redirect_to private_office_path
   end
