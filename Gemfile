@@ -42,6 +42,7 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rails-console'
   gem 'capistrano-rbenv', '~> 2.0'
+  gem 'capistrano-sidekiq', group: :development
   gem 'guard-bundler'
   gem 'guard-rails'
   gem 'guard-rspec'

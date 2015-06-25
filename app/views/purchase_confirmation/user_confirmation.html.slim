@@ -1,0 +1,16 @@
+p = @order.name
+p Номер вашего заказа ##{@order.id}
+ul
+  ' В заказ входят:
+  -@order.line_items.each do |line_item|
+    li
+      = link_to line_item.product.name, line_item.product
+      '  #{line_item.quantity} шт. x
+      ' #{number_to_currency(line_item.price)} =
+      ' #{number_to_currency(line_item.total_price)}
+
+p Общая сумма вашей покупки: #{number_to_currency(@order.total_price)}
+p Адрес доставки: #{@order.city}, #{@order.address}
+p Способ доставки: #{@order.delivery_type}
+p В ближайшее время наши сотрудники с вами свяжутся
+p Спасибо за покупку, ждем вас снова.

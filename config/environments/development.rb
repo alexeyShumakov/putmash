@@ -36,16 +36,18 @@ Rails.application.configure do
   # Raises helpful error messages.
   config.assets.raise_runtime_errors = true
 
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'northline.net'}
 
-  ActionMailer::Base.smtp_settings = {
-      :port           => 587,
-      :address        => 'smtp.mailgun.org',
-      :user_name      => ENV['USER_NAME'],
-      :password       => ENV['PASSWORD'],
-      :domain         => ENV['DOMAIN'],
-      :authentication => :plain,
-  }
+  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+
+  # ActionMailer::Base.smtp_settings = {
+  #     :port           => 587,
+  #     :address        => 'smtp.mailgun.org',
+  #     :user_name      => ENV['USER_NAME'],
+  #     :password       => ENV['PASSWORD'],
+  #     :domain         => ENV['DOMAIN'],
+  #     :authentication => :plain,
+  # }
   ActionMailer::Base.delivery_method = :smtp
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
