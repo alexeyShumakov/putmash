@@ -18,10 +18,9 @@ class OrdersController < ApplicationController
       @order.add_item_from_cart(@cart)
 
       AdminUser.all.each do |admin|
-        PurchaseConfirmation.admin_confirmation(@order, admin).deliver_later
+        PurchaseConfirmation.delay.admin_confirmation(@order, admin)
       end
-      PurchaseConfirmation.user_confirmation(@order).deliver_later
-
+      PurchaseConfirmation.delay.user_confirmation(@order)
       redirect_to root_path, notice: 'Спасибо за покупку! В ближайшее время мы с вами свяжемся.'
     else
       render :new
