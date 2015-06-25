@@ -41,7 +41,6 @@ namespace :deploy do
     on roles(:all) do
       sudo "service unicorn stop"
       sudo "service unicorn start"
-      # execute :bundle, "whenever --update-crontab #{fetch(:application)}"
     end
   end
 
