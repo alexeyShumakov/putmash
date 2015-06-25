@@ -11,11 +11,11 @@ class ContactsController < ApplicationController
 
   def create
     @contact = Contact.new(contact_params)
-			if @contact.save
+      if @contact.save
         redirect_to root_path, notice: 'Спасибо за обращение, скоро мы с вами свяжемся.'
       else
         render :new
-			end
+      end
   end
 
   private

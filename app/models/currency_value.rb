@@ -1,3 +1,3 @@
 class CurrencyValue < ActiveRecord::Base
-	validates :gbp, :usd, :eur, numericality: true
+  validates :gbp, :usd, :eur, numericality: true
 end

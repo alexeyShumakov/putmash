@@ -20,7 +20,7 @@ stdout_path "/home/alexey/putmash/shared/log/unicorn.stdout.log"
 
 preload_app true
 GC.respond_to?(:copy_on_write_friendly=) and
-		GC.copy_on_write_friendly = true
+    GC.copy_on_write_friendly = true
 
 check_client_connection false
 
@@ -28,28 +28,28 @@ check_client_connection false
 run_once = true
 
 before_fork do |server, worker|
-	# the following is highly recomended for Rails + "preload_app true"
-	# as there's no need for the master process to hold a connection
-	defined?(ActiveRecord::Base) and
-			ActiveRecord::Base.connection.disconnect!
+  # the following is highly recomended for Rails + "preload_app true"
+  # as there's no need for the master process to hold a connection
+  defined?(ActiveRecord::Base) and
+      ActiveRecord::Base.connection.disconnect!
 
-	# Occasionally, it may be necessary to run non-idempotent code in the
-	# master before forking.  Keep in mind the above disconnect! example
-	# is idempotent and does not need a guard.
-	if run_once
-		# do_something_once_here ...
-		run_once = false # prevent from firing again
-	end
+  # Occasionally, it may be necessary to run non-idempotent code in the
+  # master before forking.  Keep in mind the above disconnect! example
+  # is idempotent and does not need a guard.
+  if run_once
+    # do_something_once_here ...
+    run_once = false # prevent from firing again
+  end
 
 end
 
 after_fork do |server, worker|
-	# per-process listener ports for debugging/admin/migrations
-	# addr = "127.0.0.1:#{9293 + worker.nr}"
-	# server.listen(addr, :tries => -1, :delay => 5, :tcp_nopush => true)
+  # per-process listener ports for debugging/admin/migrations
+  # addr = "127.0.0.1:#{9293 + worker.nr}"
+  # server.listen(addr, :tries => -1, :delay => 5, :tcp_nopush => true)
 
-	# the following is *required* for Rails + "preload_app true",
-	defined?(ActiveRecord::Base) and
-			ActiveRecord::Base.establish_connection
+  # the following is *required* for Rails + "preload_app true",
+  defined?(ActiveRecord::Base) and
+      ActiveRecord::Base.establish_connection
 
 end

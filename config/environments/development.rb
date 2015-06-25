@@ -39,12 +39,12 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   ActionMailer::Base.smtp_settings = {
-		  :port           => 587,
-		  :address        => 'smtp.mailgun.org',
-		  :user_name      => ENV['USER_NAME'],
-		  :password       => ENV['PASSWORD'],
-		  :domain         => ENV['DOMAIN'],
-		  :authentication => :plain,
+      :port           => 587,
+      :address        => 'smtp.mailgun.org',
+      :user_name      => ENV['USER_NAME'],
+      :password       => ENV['PASSWORD'],
+      :domain         => ENV['DOMAIN'],
+      :authentication => :plain,
   }
   ActionMailer::Base.delivery_method = :smtp
   # Raises error for missing translations

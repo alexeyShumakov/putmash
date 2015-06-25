@@ -1,9 +1,9 @@
 module ApplicationHelper
-	def custom_currency(price)
-		number_to_currency(price, unit: "", separator: ",", delimiter: " ")
-	end
+  def custom_currency(price)
+    number_to_currency(price, unit: "", separator: ",", delimiter: " ")
+  end
 
-	def resource_name
+  def resource_name
     :user
   end
 

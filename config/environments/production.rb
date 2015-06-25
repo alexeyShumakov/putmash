@@ -79,12 +79,12 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'http://188.166.122.14/'}
 
   ActionMailer::Base.smtp_settings = {
-		  :port           => 587,
-		  :address        => 'smtp.mailgun.org',
-		  :user_name      => ENV['USER_NAME'],
-		  :password       => ENV['PASSWORD'],
-		  :domain         => ENV['DOMAIN'],
-		  :authentication => :plain,
+      :port           => 587,
+      :address        => 'smtp.mailgun.org',
+      :user_name      => ENV['USER_NAME'],
+      :password       => ENV['PASSWORD'],
+      :domain         => ENV['DOMAIN'],
+      :authentication => :plain,
   }
   ActionMailer::Base.delivery_method = :smtp
 end

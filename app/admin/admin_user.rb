@@ -1,5 +1,5 @@
 ActiveAdmin.register AdminUser do
-	menu label: 'Администраторы'
+  menu label: 'Администраторы'
   permit_params :email, :password, :password_confirmation
 
   index do
