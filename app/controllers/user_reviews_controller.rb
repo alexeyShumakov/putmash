@@ -1,8 +1,8 @@
 class UserReviewsController < ApplicationController
   before_action :authenticate_user!, only: [:create]
+  before_action :set_user_reviews
 
   def index
-    @user_reviews = UserReview.all.page(params[:page])
     @user_review = UserReview.new
   end
 
@@ -17,6 +17,9 @@ class UserReviewsController < ApplicationController
   end
 
   private
+    def set_user_reviews
+      @user_reviews = UserReview.all.page(params[:page])
+    end
     def user_review_params
       params.required(:user_review).permit(:body)
     end

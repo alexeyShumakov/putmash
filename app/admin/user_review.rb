@@ -8,7 +8,9 @@ ActiveAdmin.register UserReview do
   index title: 'Отзывы' do
     id_column
     column 'Пользователь', :user
-    column 'Отзыв', :body
+    column 'Отзыв', :body do |review|
+       review.body.truncate(50)
+    end
     column 'Проверено?', :moderated
     actions
   end
