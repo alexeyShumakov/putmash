@@ -9,7 +9,7 @@
         .panel.panel-default
           .panel-heading
             strong #{review.user.name} #{review.user.surname} написал
-            em.pull-right
+            em.pull-right.hidden-xs
               = distance_of_time_in_words_to_now review.created_at
               '  назад
           .panel-body
