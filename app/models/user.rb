@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :orders
+  has_many :user_reviews
   enum gender: ['Мужской', 'Женский']
 
   validates :birth_date, :name, :organization, :position, :surname,

@@ -1,0 +1,8 @@
+= simple_form_for(@user_review) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :body, label: 'Ваш отзыв'
+
+  .form-actions
+    = f.button :submit, 'Отправить отзыв'

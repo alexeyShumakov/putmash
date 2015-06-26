@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :reviews
-  resources :reviews
   get 'users/private_office', as: :private_office
   get 'users/orders', as: :user_orders
   get 'carts/my_cart', as: :my_cart
@@ -8,6 +6,7 @@ Rails.application.routes.draw do
   get 'products/search', as: :products_search
   get 'products/about', as: :products_about
 
+  resources :user_reviews, only:[:index, :create]
   resources :contacts, only:[:create, :new, :index]
   resources :news_item, only:[:show, :index], path: 'news'
   resources :categories, only:[:show]
