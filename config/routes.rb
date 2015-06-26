@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  resources :reviews
+  resources :reviews
   get 'users/private_office', as: :private_office
   get 'users/orders', as: :user_orders
   get 'carts/my_cart', as: :my_cart
 
   get 'products/search', as: :products_search
+  get 'products/about', as: :products_about
 
   resources :contacts, only:[:create, :new, :index]
   resources :news_item, only:[:show, :index], path: 'news'

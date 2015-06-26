@@ -2,6 +2,10 @@ class ProductsController < ApplicationController
   def show
     @product = Product.where('featured', true).find(params[:id])
   end
+
+  def about
+  end
+
   def search
     @keyword = params[:search]
     if @keyword.length > 3

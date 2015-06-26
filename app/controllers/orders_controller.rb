@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
       current_user.orders << @order
       @order.add_item_from_cart(@cart)
       PurchaseJob.new.async.perform(@order)
-      redirect_to private_office_path
+      redirect_to private_office_path, notice: 'Спасибо за покупку! В ближайшее время мы с вами свяжемся.'
     else
       render :new
     end
