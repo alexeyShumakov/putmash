@@ -1,4 +1,8 @@
 class NewsItem < ActiveRecord::Base
+  def to_param
+    "#{id}-#{title.parameterize}"
+  end
+
   paginates_per 10
   default_scope { order('created_at DESC') }
 

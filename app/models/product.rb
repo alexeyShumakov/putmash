@@ -1,4 +1,8 @@
 class Product < ActiveRecord::Base
+  def to_param
+    "#{id}-#{name.parameterize}"
+  end
+
   include PgSearch
   paginates_per 12
   default_scope {order('updated_at DESC')}
