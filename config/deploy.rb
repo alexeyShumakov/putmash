@@ -39,8 +39,8 @@ namespace :deploy do
   task :restart do
     desc "Restart Unicorn"
     on roles(:all) do
-       run "sudo service unicorn stop"
-       run "sudo service unicorn start"
+       sudo "service unicorn stop"
+       sudo "service unicorn start"
     end
   end
 
