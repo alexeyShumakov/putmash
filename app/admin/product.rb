@@ -40,6 +40,7 @@ ActiveAdmin.register Product do
   form :html => { :enctype => "multipart/form-data" } do |f|
     f.inputs do
       f.input :name, label: 'Имя'
+      f.input :category, label: 'Категория'
       f.input :article, label: 'Артикул'
       f.input :featured, label: 'Опубилкован'
       f.input :price, label: 'Цена'
