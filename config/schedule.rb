@@ -26,7 +26,7 @@ env :PATH, ENV['PATH']
 # 	runner "CurrencyWorker.perform_async"
 # end
 
-every 1.day, at: '12:01 am' do
+every 1.day, at: '6:01 am' do
   rake "currency_worker:get", :output => 'log/cron.log'
 end
 
