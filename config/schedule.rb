@@ -29,7 +29,6 @@ env :PATH, ENV['PATH']
 every 1.day, at: '6:01 am' do
   rake "currency_worker:get", :output => 'log/cron.log'
 end
-# Wait production time!
-# every 1.day, :at => '5:00 am' do
-#   rake "-s sitemap:refresh"
-# end
+every 1.day, :at => '5:00 am' do
+  rake "-s sitemap:refresh"
+end

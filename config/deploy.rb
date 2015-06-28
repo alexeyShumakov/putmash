@@ -39,19 +39,19 @@ namespace :deploy do
   task :restart do
     desc "Restart Unicorn"
     on roles(:all) do
-       sudo "service unicorn stop"
-       sudo "service unicorn start"
+       sudo "service unicorn restart"
     end
   end
 
   after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
+    on roles(:all) do
       within release_path do
-        execute :rake, 'cache:clear'
+        with rails_env: fetch(:rails_env) do
+          execute :rake, 'cache:clear'
+        end
       end
     end
   end
 
-  after :finishing, 'deploy:cleanup'
-  after "deploy:restart", "deploy:update_crontab"
+  before "deploy:restart", "deploy:update_crontab"
 end
