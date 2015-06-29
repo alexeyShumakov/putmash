@@ -1,5 +1,5 @@
 SitemapGenerator::Sitemap.default_host = "http://northlines.net"
-SitemapGenerator::Sitemap.sitemaps_path = 'shared/'
+SitemapGenerator::Sitemap.sitemaps_path = 'shared/public'
 
 SitemapGenerator::Sitemap.create do
 

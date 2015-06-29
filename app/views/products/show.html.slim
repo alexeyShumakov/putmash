@@ -33,6 +33,6 @@ ol.breadcrumb
           dd = ad.value
   .col-sm-6.col-md-6
     -unless @product.first_image.blank?
-      = image_tag @product.first_image.url(:medium), class: 'img-rounded'
+      = image_tag @product.first_image.url(:medium), class: 'img-rounded show-img'
     -unless @product.second_image.blank?
-      = image_tag @product.second_image.url(:medium), class: 'img-rounded'
+      = image_tag @product.second_image.url(:medium), class: 'img-rounded show-img'
