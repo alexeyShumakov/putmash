@@ -34,6 +34,8 @@ gem 'draper'
 gem 'kaminari'
 gem 'russian', '~> 0.6.0'
 
+gem 'redcarpet'
+gem 'truncate_html'
 gem 'faker'
 gem 'dotenv-rails'
 group :development do

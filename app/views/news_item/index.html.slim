@@ -14,7 +14,7 @@
             '  назад
           p
             h4 = link_to news.title, news
-          p = news.body.truncate(300)
+          p = truncate_html(markdown(news.body), length: 300)
           = link_to 'Читать дальше', news, class: 'btn btn-primary pull-right'
     nav
       ul.pager
