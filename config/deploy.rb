@@ -33,8 +33,9 @@ namespace :deploy do
   end
 
   task :restart do
-    invoke 'unicorn:legacy_restart'
+    invoke 'unicorn:reload'
   end
 
   after 'deploy:publishing', 'deploy:restart'
+  after 'deploy:publishing', 'deploy:sitemap:create'
 end
